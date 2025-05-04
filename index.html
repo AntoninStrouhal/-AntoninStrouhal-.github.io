@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Thanks for Your Order</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 3rem auto; }
+    .hidden { display: none; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+  <h1>🎉 Thanks for Your Purchase!</h1>
+  <p>To unlock the Content Hook Blueprint, please confirm:</p>
+  <label>
+    <input type="checkbox" id="consent" />
+    I want instant access to the course content, and I understand that by doing so I lose my 14-day right to cancel.
+  </label>
+  <br/><br/>
+  <button id="startBtn" disabled>I want my Content Hook Blueprint</button>
+
+  <div id="content" class="hidden">
+    <h2>Your Content Hook Blueprint</h2>
+    <p><a href="https://your-course-platform.com/your-course" target="_blank">
+      Click here if the button above didn’t work.
+    </a></p>
+  </div>
+
+  <script>
+    // Grab the checkbox and button elements
+    const chk = document.getElementById('consent');
+    const btn = document.getElementById('startBtn');
+
+    // Enable the button only when checkbox is checked
+    chk.addEventListener('change', () => {
+      btn.disabled = !chk.checked;
+    });
+
+    // On click: reveal the hidden content and update button state
+    btn.addEventListener('click', () => {
+      document.getElementById('content').classList.remove('hidden');
+      btn.disabled = true;
+      btn.textContent = 'Access Granted ✅';
+    });
+  </script>
+</body>
+</html>
